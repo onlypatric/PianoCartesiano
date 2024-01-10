@@ -1,6 +1,12 @@
 import javax.swing.*;
+
 /**
- * Classe dedicata agli slider per selezionare la formula
+ * La classe SliderPanel è dedicata alla gestione degli slider per la selezione
+ * dei valori a, b e c della formula.
+ * 
+ * @author check readme
+ * @version 1.1
+ * @see README.md
  */
 class SliderPanel extends JPanel{
     private JSlider slider2,slider3;
@@ -9,6 +15,13 @@ class SliderPanel extends JPanel{
     private JPanel sliderJPanel1,sliderJPanel2,sliderJPanel3;
     CartesianPanel panel;
 
+    /**
+     * Costruttore della classe SliderPanel.
+     *
+     * @param panel         Il pannello CartesianPanel a cui questa classe è
+     *                      associata.
+     * @param formulaJLabel JLabel utilizzato per visualizzare la formula corrente.
+     */
     public SliderPanel(CartesianPanel panel,JLabel formulaJLabel) {
         this.formulaJLabel = formulaJLabel;
         this.panel=panel;
@@ -38,6 +51,11 @@ class SliderPanel extends JPanel{
         addListeners();
         buildComponents();
     }
+
+    /**
+     * Metodo privato utilizzato per costruire e posizionare gli slider nella
+     * finestra.
+     */
     private void buildComponents(){
         sliderJPanel1.add(new JLabel("a"));
         sliderJPanel1.add(slider1);
@@ -49,6 +67,11 @@ class SliderPanel extends JPanel{
         add(sliderJPanel2);
         add(sliderJPanel3);
     }
+
+    /**
+     * Metodo privato utilizzato per aggiungere gli ascoltatori agli slider per
+     * l'aggiornamento della formula.
+     */
     private void addListeners(){
         slider1.addChangeListener(e->{
             panel.setA(slider1.getScaledValue());
@@ -59,11 +82,16 @@ class SliderPanel extends JPanel{
             updateLabel();
         });
         slider3.addChangeListener(e->{
-            panel.setC(slider3.getValue()*10);
+            panel.setC(slider3.getValue()*100);
             updateLabel();
         });
     }
+
+    /**
+     * Metodo pubblico utilizzato per aggiornare la JLabel con la formula corrente
+     * basata sui valori degli slider.
+     */
     public void updateLabel(){
-        formulaJLabel.setText("Formula mostrata y="+panel.getA()*10+"x^2+"+panel.getB()+"x+"+panel.getC()/10);
+        formulaJLabel.setText("Formula mostrata y="+panel.getA()*50+"x^2+"+panel.getB()/100*6+"x+"+panel.getC()/100/4);
     }
 }

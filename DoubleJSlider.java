@@ -4,6 +4,9 @@ import javax.swing.JSlider;
  * Slider costruito sopra il JSlider predefinito di Swing che consente valori
  * `Double` come output. Questo slider elabora i dati come `Integer`, per poi
  * ridimensionarli a `Double` tramite un valore di scala.
+ * @author check readme
+ * @version 1.1
+ * @see README.md
  */
 class DoubleJSlider extends JSlider {
 

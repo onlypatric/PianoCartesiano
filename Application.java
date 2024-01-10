@@ -6,6 +6,10 @@ import java.util.prefs.Preferences;
 
 /**
  * Applicazione principale
+ * 
+ * @author check readme
+ * @version 1.1
+ * @see README.md
  */
 public class Application extends JFrame {
 
