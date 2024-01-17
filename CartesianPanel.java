@@ -21,6 +21,7 @@ class CartesianPanel extends JPanel {
     private double a = 1.0;  // Valori predefiniti
     private double b = 0.0;
     private double c = 0.0;
+    private Color currColor = Color.BLUE;
 
     /**
      * Restituisce il valore corrente del coefficiente a.
@@ -71,6 +72,16 @@ class CartesianPanel extends JPanel {
     }
 
     /**
+     * imposta il colore della parabola
+     * @param newColor il nuovo colore della parabola
+     */
+    public void setParabolaColor(Color newColor){
+        currColor=newColor;
+        revalidate();
+        repaint();
+    }
+
+    /**
      * Metodo privato per disegnare la parabola sulla finestra.
      *
      * @param g      Oggetto Graphics utilizzato per disegnare.
@@ -79,7 +90,7 @@ class CartesianPanel extends JPanel {
      */
     private void drawParabola(Graphics g, int centerX, int centerY) {
         int scale = 20;
-        g.setColor(Color.BLUE);
+        g.setColor(currColor);
 
         // Disegna la parabola in base ai valori di a, b e c
         for (float x = -getWidth(); x <= getWidth(); x += 0.1) {
@@ -105,7 +116,7 @@ class CartesianPanel extends JPanel {
         int scale = 20;
         int axisMarkingLength = 5;
 
-        g.setColor(Color.BLACK);
+        g.setColor(Color.WHITE);
 
         // Disegna i valori sull'asse x
         for (int x = -getWidth() / scale; x <= getWidth() / scale; x++) {

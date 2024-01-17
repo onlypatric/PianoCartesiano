@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 import javax.swing.*;
 
 /**
@@ -29,7 +31,7 @@ class SliderPanel extends JPanel{
 
         sliderJPanel1=new JPanel();
         sliderJPanel1.setLayout(new BoxLayout(sliderJPanel1, BoxLayout.PAGE_AXIS));
-        slider1 = new DoubleJSlider(-100, 100, 1, 100);
+        slider1 = new DoubleJSlider(-100, 100, 50, 100);
         slider1.setMajorTickSpacing(10);
         slider1.setMinorTickSpacing(1);
         slider1.setPaintTicks(true);
@@ -48,8 +50,18 @@ class SliderPanel extends JPanel{
         slider3.setMinorTickSpacing(1);
         slider3.setPaintTicks(true);
 
+        sliderJPanel1.setBackground(Color.BLACK);
+        sliderJPanel2.setBackground(Color.BLACK);
+        sliderJPanel3.setBackground(Color.BLACK);
+
         addListeners();
         buildComponents();
+    }
+
+    private JLabel whiteLabel(String text){
+        JLabel lbl = new JLabel(text);
+        lbl.setForeground(getBackground());
+        return lbl;
     }
 
     /**
@@ -57,11 +69,11 @@ class SliderPanel extends JPanel{
      * finestra.
      */
     private void buildComponents(){
-        sliderJPanel1.add(new JLabel("a"));
+        sliderJPanel1.add(whiteLabel("a"));
         sliderJPanel1.add(slider1);
-        sliderJPanel2.add(new JLabel("b"));
+        sliderJPanel2.add(whiteLabel("b"));
         sliderJPanel2.add(slider2);
-        sliderJPanel3.add(new JLabel("c"));
+        sliderJPanel3.add(whiteLabel("c"));
         sliderJPanel3.add(slider3);
         add(sliderJPanel1);
         add(sliderJPanel2);

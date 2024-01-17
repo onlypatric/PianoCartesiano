@@ -18,6 +18,7 @@ public class Application extends JFrame {
     private static final String PREF_KEY_WIDTH = "frameWidth";
     private static final String PREF_KEY_HEIGHT = "frameHeight";
     
+    private CartesianPanel cartesianPanel;
 
     public Application() {
         setTitle("Parabola su piano cartesiano");
@@ -34,7 +35,9 @@ public class Application extends JFrame {
         setLayout(new BorderLayout());
 
         // Create a panel to draw the Cartesian plane and parabola
-        CartesianPanel cartesianPanel = new CartesianPanel();
+        cartesianPanel = new CartesianPanel();
+        cartesianPanel.setBackground(Color.BLACK);
+        cartesianPanel.setForeground(Color.WHITE);
         JLabel formulaJLabel = new JLabel("Formula mostrata: y=x^2");
 
         SliderPanel sliderPanel = new SliderPanel(cartesianPanel, formulaJLabel);
@@ -56,7 +59,39 @@ public class Application extends JFrame {
             }
         });
 
+        JMenuBar menuBar = new JMenuBar();
+        
+        menuBar.add(createPreferencesMenu());
+
+        this.setJMenuBar(menuBar);
+
         setVisible(true);
+    }
+
+    /**
+     * Genera il menu preferenze, per selezionare il colore della parabola
+     * @return
+     */
+    private JMenu createPreferencesMenu() {
+        JMenu preferencesMenu = new JMenu("Preferenze");
+
+        JMenuItem selectColorItem = new JMenuItem("Seleziona Colore Parabola");
+        selectColorItem.addActionListener(e->{
+            selectParabolaColor();
+        });
+
+        // Add the item to the preferences menu
+        preferencesMenu.add(selectColorItem);
+
+        return preferencesMenu;
+    }
+
+    /**
+     * Selettore di colori per la parabola
+    */
+    private void selectParabolaColor() {
+        Color selectedColor = JColorChooser.showDialog(this, "Seleziona Colore Parabola", Color.BLACK);
+        cartesianPanel.setParabolaColor(selectedColor);
     }
 
     private void saveFrameLocation() {
