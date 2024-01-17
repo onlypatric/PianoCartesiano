@@ -60,7 +60,7 @@ class SliderPanel extends JPanel{
 
     private JLabel whiteLabel(String text){
         JLabel lbl = new JLabel(text);
-        lbl.setForeground(getBackground());
+        lbl.setForeground(Color.WHITE);
         return lbl;
     }
 

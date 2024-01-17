@@ -94,14 +94,14 @@ class CartesianPanel extends JPanel {
 
         // Disegna la parabola in base ai valori di a, b e c
         for (float x = -getWidth(); x <= getWidth(); x += 0.1) {
-            int y = (int) (a * x * x + b * x + c) / scale;
+            int y = (int) (a * x * x + b * x + c) / scale; // ax^2 + bx + c
             y = -y;
 
             int xPixel = (int) (centerX + x);
             int yPixel = centerY + y;
 
             // Disegna un punto della parabola
-            g.fillRect(xPixel, yPixel, 1, 1);
+            g.fillRect(xPixel, yPixel, 2, 2);
         }
     }
 
