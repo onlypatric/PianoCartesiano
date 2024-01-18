@@ -42,4 +42,4 @@ L'applicazione è stata creata da:
 - Barioni Lorenzo
 
 Versione
-Questa è la versione 1.1 dell'applicazione.
+Questa è la versione 1.1 dell'applicazione, testata sulla JDK 21.
